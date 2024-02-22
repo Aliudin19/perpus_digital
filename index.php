@@ -1,9 +1,4 @@
-<?php
-    include "koneksi.php";
-    if (!isset($_SESSION['user'])) {
-        header('header:login.php');
-    }
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +32,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-book-open"></i>
+                    <i class="fas fa-book"></i>
                 </div>
                 <div class="sidebar-brand-text mx-2">Perpustakaan Digital </div>
             </a>
@@ -78,7 +73,7 @@
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="?page=peminjaman">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-users"></i>
                     <span>Peminjaman</span></a>
             </li>
 
@@ -86,12 +81,6 @@
                 <a class="nav-link" href="?page=ulasan">
                     <i class="fas fa-fw fa-comments"></i>
                     <span>ulasan</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Laporan Peminjam</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="logout.php">
@@ -106,8 +95,6 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
-
 
         </ul>
         <!-- End of Sidebar -->

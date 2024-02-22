@@ -1,4 +1,7 @@
-<h1 class="mt-4">Kategori Buku</h1>
+<?php
+    include "koneksi.php"
+?>
+<h1 class="mt-4" align="center">KATEGORI BUKU</h1>
 <div class="card">
     <div class="card-body">
     <div class="row mb-3">

@@ -1,4 +1,8 @@
-<h1 class="mt-4">Ubah Kategori Buku</h1>
+<?php
+    include "koneksi.php"
+?>
+
+<h1 class="mt-4" align="center">Ubah Kategori Buku</h1>
 <div class="card">
     <div class="card-body">
         <div class="row">
@@ -6,21 +10,16 @@
                 <form method="post">
                     <?php
                     $id = $_GET['id'];
-                    if (isset($_POST['submit'])) {            
-                        if(!empty($_POST['kategori'])) {
+                    if (isset($_POST['submit'])) {                                   
                             $kategori = $_POST['kategori'];
                             $query = mysqli_query($koneksi, "UPDATE kategori set kategori='$kategori' where id_kategori=$id");
 
                             if ($query) {
-                                echo '<script>alert("Ubah Data Berhasil.");</script>';
+                                echo '<script>alert("Ubah Data Berhasil."); location.href="?page=kategori"</script>';
                             } else {
                                 echo '<script>alert("Ubah Data Gagal.");</script>';
                             }
-                        } else {
-                            // Tampilkan pesan jika nama kategori kosong
-                            echo '<script>alert("Nama Kategori harus diisi.");</script>';
-                        }
-                    }
+                        } 
                    
                     $query = mysqli_query($koneksi, ("SELECT*FROM kategori where id_kategori=$id"));
                     $data = mysqli_fetch_array($query);
@@ -32,8 +31,8 @@
                     <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
-                            <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
-                            <!-- Tombol Kembali untuk kembali ke halaman kategori -->
+                            <button type="submit" name="submit" class="btn btn-primary" >Simpan</button>
+                            
                             <a href="?page=kategori" class="btn btn-danger">Kembali</a>
                         </div>
                     </div>
