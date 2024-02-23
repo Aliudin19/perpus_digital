@@ -9,20 +9,21 @@
             <a href="?page=tambah_buku" class="btn btn-primary">+ Tambah Buku</a>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
                 <th>No</th>
-                <!-- <th>Kategori</th> -->
+                <th>Nama Kategori</th>
                 <th>Judul</th>
                 <th>Penulis</th>
                 <th>Penerbit</th>
-                <th>Tahun terbit</th>
+                <th>Tahun Terbit</th>
                 <th>Deskripsi</th>
                 <th>Aksi</th>
                 <?php
                 $i = 1;
-                $query = mysqli_query($koneksi, "SELECT*FROM buku ");
+                $query = mysqli_query($koneksi, "SELECT*FROM buku LEFT JOIN kategori on buku.id_kategori = kategori.id_kategori");
                 while ($data = mysqli_fetch_array($query)) {
                 ?>
                 <tr>
                     <td><?php echo $i++; ?></td>
+                    <td><?php echo $data['kategori']; ?></td>
                     <td><?php echo $data['judul']; ?></td>
                     <td><?php echo $data['penulis']; ?></td>
                     <td><?php echo $data['penerbit']; ?></td>

@@ -1,5 +1,5 @@
 <?php
-    include "koneksi.php"
+include "koneksi.php"
 ?>
 
 <!DOCTYPE html>
@@ -46,11 +46,11 @@
                                     
                                     <form method="post">
                                         <?php
-                                        if (isset($_post['submit'])) {
-                                            $username = $_post['username'];
-                                            $password = md5($_post['password']);
+                                        if (isset($_POST['submit'])) {
+                                            $username = $_POST['username'];
+                                            $password = md5($_POST['password']);
 
-                                            $data = mysqli_query($koneksi, "SELECT * FROM user where username='$username', password='$password'");
+                                            $data = mysqli_query($koneksi, "SELECT * FROM user where username='$username' and password='$password'");
                                             $cek = mysqli_num_rows($data);
 
                                             if ($cek > 0) {

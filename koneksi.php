@@ -1,4 +1,5 @@
 <?php
 session_start();
-$koneksi = mysqli_connect('localhost', 'root', '', 'perpustakaan');
+error_reporting(0);
+$koneksi = mysqli_connect('localhost', 'root', '', 'perpus2');
 ?>

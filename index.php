@@ -1,4 +1,6 @@
-
+<?php 
+include "koneksi.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,44 +59,54 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="?page=kategori">
-                    <i class="fas fa-table"></i>
-                    <span>Kategori</span>
-                </a>
-            </li>
+            <?php if ($_SESSION['user']['level'] != 'peminjam') { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="?page=kategori">
+                        <i class="fas fa-table"></i>
+                        <span>Kategori</span>
+                    </a>
+                </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="?page=buku">
-                    <i class="fas fa-fw fa-book"></i>
-                    <span>buku</span></a>
-            </li>
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="?page=peminjaman">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Peminjaman</span></a>
-            </li>
-
+                <!-- Nav Item - Charts -->
+                <li class="nav-item">
+                    <a class="nav-link" href="?page=buku">
+                        <i class="fas fa-fw fa-book"></i>
+                        <span>buku</span></a>
+                </li>
+                <!-- Nav Item - Tables -->
+            <?php } else { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="?page=peminjaman">
+                        <i class="fas fa-fw fa-users"></i>
+                        <span>Peminjaman</span></a>
+                </li>
+            <?php } ?>
             <li class="nav-item">
                 <a class="nav-link" href="?page=ulasan">
                     <i class="fas fa-fw fa-comments"></i>
                     <span>ulasan</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="logout.php">
-                    <i class="fas fa-power-off"></i>
-                    <span>LogOut</span></a>
-            </li>
-          
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+                <?php if ($_SESSION['user']['level'] != 'peminjam') {
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+                ?>
+            <li class="nav-item">
+                <a class="nav-link" href="?page=laporan">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Laporan Peminjaman</span></a>
+            </li>
+        <?php  } ?>
+        <li class="nav-item">
+            <a class="nav-link" href="logout.php">
+                <i class="fas fa-power-off"></i>
+                <span>LogOut</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
 
         </ul>
         <!-- End of Sidebar -->
@@ -105,18 +117,18 @@
             <!-- Main Content -->
             <div id="content">
 
-            <?php
-            $page = isset($_GET['page']) ? $_GET['page'] : 'home';
-            if (file_exists($page . '.php')) {
-                include $page . '.php';
-            } else {
-                include '404.php';
-            }
-            ?>
+                <?php
+                $page = isset($_GET['page']) ? $_GET['page'] : 'home';
+                if (file_exists($page . '.php')) {
+                    include $page . '.php';
+                } else {
+                    include '404.php';
+                }
+                ?>
 
             </div>
             <!-- End of Main Content -->
-           
+
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
